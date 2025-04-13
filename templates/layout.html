@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Namma Nagara</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+<body>
+    <header>
+        <h1>Namma Nagara</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('services') }}">Services</a>
+            <a href="{{ url_for('complaints') }}">Complaints</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+            <a href="{{ url_for('admin_login') }}">Admin</a>
+            {% if session.get('admin_logged_in') %}
+            <a href="{{ url_for('logout') }}">Logout</a>
+            {% endif %}
+       </nav>
+
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
